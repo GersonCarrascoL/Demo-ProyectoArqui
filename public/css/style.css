@@ -7,6 +7,18 @@ header, body, footer{
     text-align: center;
 }
 */
+
+
+.header{
+	background: #222222;
+	color: white;
+	padding: 15px 0;
+	font-size: 24px;
+	margin-bottom: 30px;
+}
+
+
+
 table {
     border-spacing: 1;
     border-collapse: collapse;
