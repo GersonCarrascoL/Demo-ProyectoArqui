@@ -10,7 +10,7 @@ class TripRepository{
 
         $response = DB::select('CALL sp_get_trips()');
 
-        return view('welcome',['response'=> $response]);
+        return view('welcome',['response'=> $response ,'response_message' => ""]);
     }
 
 
@@ -66,11 +66,25 @@ class TripRepository{
             // You can set any number of default request options.
 
         ]);
-
+        $id_viaje = $request->input('idTrip');
         $latitude = $request->input('tripInitLatitude');
         $longitude = $request->input('tripInitLongitude');
-        // dd($latitude);
-        // dd($latitude);
+        $date = $request->input('tripDate');
+        $conductor_name = $request->input('driverName');
+        $conductor_ln = $request->input('driverLastName');
+        $trip_status = $request->input('tripStatus');
+        
+        switch($trip_status){
+            case 1:
+                $status = "En espera";
+                break;
+            case 2:
+                $status = "En viaje";
+                break;
+            case 3:
+                $status = "Finalizado";
+                break;
+        }
         $res = $client->request('POST', '/viaje', [
             'multipart' => [
                 [
@@ -80,13 +94,50 @@ class TripRepository{
                 [
                     'name' => 'longitude',
                     'contents' => $longitude
+                ],
+                [
+                    'name' => 'id_viaje',
+                    'contents' => $id_viaje
+                ],
+                [
+                    'name' => 'fecha_viaje',
+                    'contents' => $date
+                ],
+                [
+                    'name' => 'nombre_p',
+                    'contents' => 'Juan'
+                ],
+                [
+                    'name' => 'apellido_p',
+                    'contents' => 'Mendieta León'
+                ],
+                [
+                    'name' => 'nombre_c',
+                    'contents' => $conductor_name
+                ],
+                [
+                    'name' => 'apellido_c',
+                    'contents' => $conductor_ln
+                ],
+                [
+                    'name' => 'estado',
+                    'contents' => $status
+                ]
+                ,
+                [
+                    'name' => 'incidencia',
+                    'contents' => 'Ninguna'
                 ]
             ]
         ]);
 
         $response = DB::select('CALL sp_get_trips()');
-
-        return back()->with(['response'=> $response]);
+        
+        if ($res->getStatusCode() == 200) {
+            $mensaje = 'Envio correcto';
+        }
+        $mensaje = 'Hubo un error';
+        return back()->with(['response'=> $response, 'response_message' => $mensaje]);
     }
 }
 ?>

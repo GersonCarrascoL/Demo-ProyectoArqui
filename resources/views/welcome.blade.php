@@ -57,11 +57,13 @@
                                                 <input type="hidden" name="tripEndLongitude" value="{{ $res->tripEndLongitude }}">
                                                 <input type="hidden" name="tripInitAddress" value="{{ $res->tripInitAddress }}">
                                                 <input type="hidden" name="tripEndAddress" value="{{ $res->tripEndAddress }}">
+                                                <input type="hidden" name="tripStatus" value="{{ $res->tripStatus }}">
                                                 <input type="hidden" name="idVehicle" value="{{ $res->idVehicle }}">
                                                 <input type="hidden" name="vehicleLicensePlate" value="{{ $res->vehicleLicensePlate }}">
                                                 <input type="hidden" name="vehicleModel" value="{{ $res->vehicleModel }}">
                                                 <input type="hidden" name="idDriver" value="{{ $res->idDriver }}">
                                                 <input type="hidden" name="driverName" value="{{ $res->driverName }}">
+                                                <input type="hidden" name="driverLastName" value="{{ $res->driverLastName }}">
                                                 <input type="hidden" name="driverCellphone" value="{{ $res->driverCellphone }}">
                                                 <button type="submit" class="btn btn-primary">Send</button>
                                             </form>
@@ -72,7 +74,14 @@
                         </table>
                     </div>
                 </div>
-                <div class="message"></div>
+                
+                <div class="message">
+                    @if ($response_message !== "")
+                        {{ $response_message }}
+                    @else
+                        
+                    @endif
+                </div>
             </div>
         </div>
         
