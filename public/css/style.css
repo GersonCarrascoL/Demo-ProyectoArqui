@@ -1,0 +1,271 @@
+header, body, footer{
+	font-family: 'Amaranth', sans-serif;
+}
+
+/*table, td, th {
+    border: 1px solid black;
+    text-align: center;
+}
+*/
+table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    font-size: 15px;
+}
+table * {
+    position: relative;
+}
+th {
+    height: 50px;
+    background: #363049;
+    color: white;
+    text-align: center;
+}
+table tbody tr {
+    height: 50px;
+}
+
+tbody{
+	background: white;
+}
+tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+table thead tr {
+    height: 60px;
+    background: #36304a;
+}
+
+tbody tr {
+    font-family: OpenSans-Regular;
+    font-size: 15px;
+    color: #808080;
+    line-height: 1.2;
+    font-weight: unset;
+}
+
+.lista-btn button{
+	background: transparent;
+	border: dashed 1px white; 
+	font-size: 15px;
+	padding: 5px 30px;
+	color: white;
+	border-radius: 5px;
+	margin-bottom: 30px;
+	transition: all 0.3s;
+}
+.lista-btn button:hover{
+	background: white;
+	/*font-size: 15px;*/
+	padding: 5px 30px;
+	color: #38cdca;
+}
+.lista-btn {
+	text-align: right;
+	margin-right: 15px;
+}
+
+
+/*** lista ***/
+
+.lista-sect-subtitulo{
+	color: white;
+	padding: 0;
+	margin-bottom: 15px;
+	font-weight: bold;
+	font-size: 20px;
+}
+.row.form-content div{
+	margin-bottom: 15px;
+}
+.lista-autonomia{
+	margin-bottom: 0;
+}
+
+.lista-sect-izq{
+	margin-bottom: 15px;
+}
+
+.lista-cuadro label{
+	color: white;
+}
+
+.lista-div{
+	padding: 0;
+}
+.lista-tit{
+	color: #1ececa;
+	font-size: 26px;
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 25px;
+}
+.lista-tit2{
+	color: white;
+	font-size: 18px;
+	text-align: center;
+	font-weight: 400;
+	margin-bottom: 0px;
+	padding: 0 30px;
+	font-weight: bold;
+	font-size: 20px;
+}
+.lista-sect1{
+	background-image: url('../img/img.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 105px;
+	padding: 0;
+}
+.lista-sect2{
+	background-image: url('../img/galeria/fondo.png');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.lista-sect2{
+	padding: 30px 0;
+	/*padding-bottom: 15px;*/
+}
+
+.lista-der{
+	background-image: url('../img/lista/foto1.jpg');
+	height: 300px;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.lista-cuadro{
+	/*background: #1fcdcb;*/
+	padding: 0;
+}
+.lista-izq{
+	padding: 15px 30px;
+	padding-bottom: 30px;
+}
+
+.lista-button{
+	text-align: center;
+}
+.lista-button button{
+	font-size: 18px;
+	background: transparent;
+    border: dashed 2px white;
+    padding: 5px 35px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    outline: none;
+    transition: all 0.4s;
+}
+.lista-span-color{
+	color: #1ececa;
+}
+.lista-button button:hover, .lista-button button:focus, .lista-button button:active {
+    border: solid 2px white;
+    color: #0ca2b3;
+    background: white;
+    font-weight: bold;
+}
+.lista-tit{
+	font-size: 30px;
+}
+.lista-sect-izq, .lista-sect-der {
+	padding: 15px 0px;
+}
+.lista-izq {
+    padding: 15px 15px;
+    padding-bottom: 30px;
+}
+
+@media (min-width: 560px){
+	.lista-sect1{
+		height: 220px;
+	}
+	.nosotros-sect1{
+		height: 220px;
+	}
+}/*fin 560*/
+@media (min-width: 768px){
+
+
+/*** lista ***/
+	.lista-autonomia{
+		margin-bottom: 0px !important;
+	}
+	
+	.lista-tit2{
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	.lista-sect2 {
+	    padding: 45px 0;
+	}
+	.lista-tit {
+	    margin-bottom: 30px;
+	}
+	
+	.lista-sect-padding{
+		padding: 30px;
+	}
+	.lista-izq, .lista-der {
+	    padding: 15px 30px;
+	}
+	.lista-tit{
+		font-size: 32px;
+	}
+	.lista-tit2{
+		font-size: 20px;
+	}
+	.lista-button{
+		text-align: right;
+	}
+	.lista-der {
+	    height: 400px;
+	}
+	.lista-izq input::placeholder, .lista-izq textarea::placeholder{
+		font-size: 20px;
+	}
+	.lista-izq{
+		padding: 30px 45px;
+	}
+	.lista-izq {
+	    padding: 30px 30px;
+	 /*   padding-bottom: 30px;*/
+	}
+}
+
+@media (min-width: 992px) {
+	
+}
+
+@media (min-width: 1200px){
+	.lista-sect1 {
+	    height: 375px;
+	}
+	.lista-tit, .lista-tit2{
+		font-size: 32px;
+	}
+}
+
+@media (min-width: 1320px){
+	.lista-sect1{
+		height: 400px;
+		padding: 0;
+	}
+	.lista-sect2 {
+	    padding: 50px 0;
+	}
+	.lista-tit{
+		font-size: 40px;
+	}
+	
+}
