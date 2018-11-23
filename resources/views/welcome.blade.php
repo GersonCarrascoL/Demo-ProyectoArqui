@@ -11,85 +11,93 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+        <div class="section_inicio1">
+            <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Inicio</th>
+                            <th>Destino</th>
+                            <th>Modelo</th>
+                            <th>Placa</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($response as $res)
+                            <tr>
+                                <th>{{ $res->driverName }}</th>
+                                <th>{{ $res->tripInitAddress }}</th>
+                                <th>{{ $res->tripEndAddress }}</th>
+                                <th>{{ $res->vehicleModel }}</th>
+                                <th>{{ $res->vehicleLicensePlate }}</th>
+                                <th>
+                                    <form class="form-data">
+                                        <input type="hidden" name="idTrip" value="{{ $res->idTrip }}">
+                                        <input type="hidden" name="tripDate" value="{{ $res->tripDate }}">
+                                        <input type="hidden" name="tripInitLatitude" value="{{ $res->tripInitLatitude }}">
+                                        <input type="hidden" name="tripInitLongitude" value="{{ $res->tripInitLongitude }}">
+                                        <input type="hidden" name="tripEndLatitude" value="{{ $res->tripEndLatitude }}">
+                                        <input type="hidden" name="tripEndLongitude" value="{{ $res->tripEndLongitude }}">
+                                        <input type="hidden" name="tripInitAddress" value="{{ $res->tripInitAddress }}">
+                                        <input type="hidden" name="tripEndAddress" value="{{ $res->tripEndAddress }}">
+                                        <input type="hidden" name="idVehicle" value="{{ $res->idVehicle }}">
+                                        <input type="hidden" name="vehicleLicensePlate" value="{{ $res->vehicleLicensePlate }}">
+                                        <input type="hidden" name="vehicleModel" value="{{ $res->vehicleModel }}">
+                                        <input type="hidden" name="idDriver" value="{{ $res->idDriver }}">
+                                        <input type="hidden" name="driverName" value="{{ $res->driverName }}">
+                                        <input type="hidden" name="driverCellphone" value="{{ $res->driverCellphone }}">
+                                        <button type="submit" class="btn btn-primary">Send</button>
+                                    </form>
+                                </th>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="message"></div>
             </div>
         </div>
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.form-data').submit(function(){
+                    // console.log( $('.form-data :input') );
+                    var $inputs = $('.form-data :input');
+
+                    var values = {};
+
+                    $inputs.each(function() {
+                        values[this.name] = $(this).val();
+                    });
+                    console.log(values.tripInitLongitude);
+                    var data = new FormData();
+                    data.append('latitude',values.tripInitLatitude);
+                    data.append('longitude',values.tripInitLongitude);
+                    console.log(data.latitude);
+                    $.ajax({
+                        url: "http://52.15.208.224:5555/viaje",
+                        type: "POST",
+                        data: data,
+                        processData: false,
+                        contentType: false,
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            // alert("error");
+                            alert(xhr.responseText);
+                            console.log(xhr.status);
+                        },
+                        success: function(data) {
+                            alert("data");
+                        }
+                        
+                    });
+                    return false;
+                });
+            });
+        </script>
     </body>
 </html>

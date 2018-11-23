@@ -6,8 +6,12 @@
  */
 
 require('./bootstrap');
-
+import VueSocketio from 'vue-socket.io';
+import socketio from 'socket-io-client';
 window.Vue = require('vue');
+
+Vue.use(VueSocketio,socketio(':6999'));
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

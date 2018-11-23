@@ -4,6 +4,14 @@ use Validator;
 use DB;
 class TripRepository{
 
+    public function index(){
+
+        $response = DB::select('CALL sp_get_trips()');
+
+        return view('welcome',['response'=> $response]);
+    }
+
+
     public function postTrip($request){
         $validate = Validator::make( $request->all(),[
             'idViaje' => 'required|numeric',
@@ -37,8 +45,7 @@ class TripRepository{
             trim($request->input('viajeStatus')),
             trim($stringIncidents)
         ]);
-        // $res =  json_decode($response);
-        // dd($response[0]->response);
+
         if( $response[0]->response == 0){
             return response()->json([
                 "message" => "Error inserted"

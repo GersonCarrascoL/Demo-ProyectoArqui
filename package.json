@@ -13,9 +13,16 @@
     "axios": "^0.16.2",
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.0.1",
+    "ioredis": "^4.2.0",
     "jquery": "^3.1.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
-    "vue": "^2.1.10"
+    "redis": "^2.8.0",
+    "vue": "^2.1.10",
+    "vue-socket.io": "^3.0.1",
+    "socket-io-client":"^2.0.4"
+  },
+  "dependencies": {
+    "socket.io": "^2.1.1"
   }
 }

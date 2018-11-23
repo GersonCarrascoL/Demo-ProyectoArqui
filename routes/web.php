@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TripController@index');
 
 Route::post('/api/v1/trip','TripController@postTrip');
