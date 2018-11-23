@@ -61,43 +61,9 @@
                 <div class="message"></div>
             </div>
         </div>
+        
         <script src="js/jquery.js"></script>
+        <script src="js/index.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                $('.form-data').submit(function(){
-                    // console.log( $('.form-data :input') );
-                    var $inputs = $('.form-data :input');
-
-                    var values = {};
-
-                    $inputs.each(function() {
-                        values[this.name] = $(this).val();
-                    });
-                    console.log(values.tripInitLongitude);
-                    var data = new FormData();
-                    data.append('latitude',values.tripInitLatitude);
-                    data.append('longitude',values.tripInitLongitude);
-                    console.log(data.latitude);
-                    $.ajax({
-                        url: "http://52.15.208.224:5555/viaje",
-                        type: "POST",
-                        data: data,
-                        processData: false,
-                        contentType: false,
-                        error: function(xhr, ajaxOptions, thrownError) {
-                            // alert("error");
-                            alert(xhr.responseText);
-                            console.log(xhr.status);
-                        },
-                        success: function(data) {
-                            alert("data");
-                        }
-                        
-                    });
-                    return false;
-                });
-            });
-        </script>
     </body>
 </html>
