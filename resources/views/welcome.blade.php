@@ -36,9 +36,9 @@
                                 <th>{{ $res->vehicleModel }}</th>
                                 <th>{{ $res->vehicleLicensePlate }}</th>
                                 <th>
-                                        {{-- action="{{ action('TripController@sendData') }}" --}}
-                                    <form  method="POST" class="form-data">
-                                        {{-- <input name="_token" type="hidden" value="{{ csrf_token() }}"/> --}}
+                                        {{-- action="{{ URL::to('TripController@sendData') }}" --}}
+                                    <form  method="POST" action="{{ URL::to('/api/v1/trip/send') }}"  class="form-data">
+                                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                                         <input type="hidden" name="idTrip" value="{{ $res->idTrip }}">
                                         <input type="hidden" name="tripDate" value="{{ $res->tripDate }}">
                                         <input type="hidden" name="tripInitLatitude" value="{{ $res->tripInitLatitude }}">

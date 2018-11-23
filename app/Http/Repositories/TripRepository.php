@@ -2,6 +2,8 @@
 namespace App\Http\Repositories;
 use Validator;
 use DB;
+use GuzzleHttp\Client;
+
 class TripRepository{
 
     public function index(){
@@ -58,7 +60,24 @@ class TripRepository{
     }
 
     public function sendData($request){
-        dd('Hola');
+        $client = new Client([
+            // Base URI is used with relative requests
+            'base_uri' => 'http://52.15.208.224:5555',
+            // You can set any number of default request options.
+
+        ]);
+
+        $latitude = $request->input('tripInitLatitude');
+        $longitude = $request->input('tripInitLongitude');
+        // dd($latitude);
+        $res = $client->request('POST', '/viaje', [
+            'form_data' => [
+                'latitude' => $latitude,
+                'longitude' => $longitude
+            ]
+        ]);
+
+        dd($res->getBody()->getContents());
     }
 }
 ?>
