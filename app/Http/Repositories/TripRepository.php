@@ -70,14 +70,23 @@ class TripRepository{
         $latitude = $request->input('tripInitLatitude');
         $longitude = $request->input('tripInitLongitude');
         // dd($latitude);
+        // dd($latitude);
         $res = $client->request('POST', '/viaje', [
-            'form_data' => [
-                'latitude' => $latitude,
-                'longitude' => $longitude
+            'multipart' => [
+                [
+                    'name' => 'latitude',
+                    'contents' => $latitude
+                ],
+                [
+                    'name' => 'longitude',
+                    'contents' => $longitude
+                ]
             ]
         ]);
 
-        dd($res->getBody()->getContents());
+        $response = DB::select('CALL sp_get_trips()');
+
+        return back()->with(['response'=> $response]);
     }
 }
 ?>
