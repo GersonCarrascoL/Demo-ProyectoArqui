@@ -14,3 +14,5 @@
 Route::get('/', 'TripController@index');
 
 Route::post('/api/v1/trip','TripController@postTrip');
+
+Route::post('/api/v1/trip/send',array('as' => 'send_data', 'uses' => 'TripController@sendData'));

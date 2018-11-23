@@ -56,5 +56,9 @@ class TripRepository{
             "message" => "Success"
         ],201);
     }
+
+    public function sendData($request){
+        dd('Hola');
+    }
 }
 ?>

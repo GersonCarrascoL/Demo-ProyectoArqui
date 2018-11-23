@@ -24,10 +24,10 @@ $(document).ready(function(){
             type: "POST",
             crossDomain: true,
             data: JSON.stringify(data),
-            dataType: "json",
+            dataType: "jsonp",
             error: function(xhr, ajaxOptions, thrownError) {
                 // alert("error");
-                alert(xhr.responseText);
+                // alert(xhr.responseText);
                 console.log(xhr.status);
             },
             success: function(data) {

@@ -21,4 +21,8 @@ class TripController extends Controller
     public function postTrip(Request $request){
         return $this->tripRepository->postTrip($request);
     }
+
+    public function sendData(Request $request){
+        return $this->tripRepository->sendData($request);
+    }
 }
